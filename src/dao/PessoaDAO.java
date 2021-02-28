@@ -18,7 +18,7 @@ import utils.Conexao;
  */
 public class PessoaDAO {
 
-    private Connection connection = Conexao.getConexao();
+    private final Connection connection = Conexao.getConexao();
 
     public void save(Pessoa pessoa) {
         try {

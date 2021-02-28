@@ -4,11 +4,11 @@ package model;
  *
  * @author Cristiano Neto
  */
-public class sala {
+public class Sala {
 
     private int id;
     private String Nome;
-    private String Lotacao;
+    private Integer Lotacao;
 
     public int getId() {
         return id;
@@ -26,11 +26,11 @@ public class sala {
         this.Nome = Nome;
     }
 
-    public String getLotacao() {
+    public Integer getLotacao() {
         return Lotacao;
     }
 
-    public void setLotacao(String Lotacao) {
+    public void setLotacao(Integer Lotacao) {
         this.Lotacao = Lotacao;
     }
     

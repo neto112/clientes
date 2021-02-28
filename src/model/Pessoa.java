@@ -10,6 +10,8 @@ public class Pessoa {
     private String Nome;
     private String Sobrenome;
 
+    public Pessoa() {}
+
     public int getId() {
         return id;
     }
@@ -32,10 +34,6 @@ public class Pessoa {
 
     public void setSobrenome(String Sobrenome) {
         this.Sobrenome = Sobrenome;
-    }
-
-    public void add(Pessoa pessoa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

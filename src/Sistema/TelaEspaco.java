@@ -5,16 +5,20 @@
  */
 package Sistema;
 
+import dao.EspacoDAO;
+import static java.lang.Integer.parseInt;
+import model.Espaco;
+
 /**
  *
  * @author Cristiano Neto
  */
-public class Espaço extends javax.swing.JFrame {
+public class TelaEspaco extends javax.swing.JFrame {
 
     /**
      * Creates new form Espaço
      */
-    public Espaço() {
+    public TelaEspaco() {
         initComponents();
     }
 
@@ -30,9 +34,7 @@ public class Espaço extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        CampoNome = new javax.swing.JTextField();
-        Campolotacao = new javax.swing.JTextField();
+        CampoLotacao = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         CampoSalvar = new javax.swing.JButton();
         CampoExcluir = new javax.swing.JButton();
@@ -49,20 +51,11 @@ public class Espaço extends javax.swing.JFrame {
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
-        jLabel2.setText("Nome");
+        jLabel2.setText("Lotacao");
 
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
-        jLabel3.setText("Sala");
-
-        CampoNome.addActionListener(new java.awt.event.ActionListener() {
+        CampoLotacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoNomeActionPerformed(evt);
-            }
-        });
-
-        Campolotacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampolotacaoActionPerformed(evt);
+                CampoLotacaoActionPerformed(evt);
             }
         });
 
@@ -110,7 +103,7 @@ public class Espaço extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Espaço"
+                "Lotacao"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -123,17 +116,11 @@ public class Espaço extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Campolotacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
-                        .addComponent(CampoNome, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(CampoLotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,16 +130,12 @@ public class Espaço extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CampoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoLotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Campolotacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,16 +152,22 @@ public class Espaço extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNomeActionPerformed
+    private void CampoLotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoLotacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoNomeActionPerformed
-
-    private void CampolotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampolotacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CampolotacaoActionPerformed
+    }//GEN-LAST:event_CampoLotacaoActionPerformed
 
     private void CampoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoSalvarActionPerformed
-        // TODO add your handling code here:
+        EspacoDAO espacoDao;
+        espacoDao = new EspacoDAO();
+
+        String lotacao;
+        lotacao = CampoLotacao.getText();
+
+        Espaco espaco;
+        espaco = new Espaco();
+        espaco.setLotacao(parseInt(lotacao));
+
+        espacoDao.save(espaco);
     }//GEN-LAST:event_CampoSalvarActionPerformed
 
     private void CampoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoExcluirActionPerformed
@@ -202,32 +191,33 @@ public class Espaço extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Espaço.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Espaço.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Espaço.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Espaço.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Espaço().setVisible(true);
+                new TelaEspaco().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CampoExcluir;
-    private javax.swing.JTextField CampoNome;
+    private javax.swing.JTextField CampoLotacao;
     private javax.swing.JButton CampoSalvar;
-    private javax.swing.JTextField Campolotacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;

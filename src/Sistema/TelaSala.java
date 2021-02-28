@@ -5,16 +5,20 @@
  */
 package Sistema;
 
+import dao.SalaDAO;
+import static java.lang.Integer.parseInt;
+import model.Sala;
+
 /**
  *
  * @author Cristiano Neto
  */
-public class Sala extends javax.swing.JFrame {
+public class TelaSala extends javax.swing.JFrame {
 
     /**
      * Creates new form Salas
      */
-    public Sala() {
+    public TelaSala() {
         initComponents();
     }
 
@@ -32,7 +36,7 @@ public class Sala extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         CampoNome = new javax.swing.JTextField();
-        Campolotacao = new javax.swing.JTextField();
+        CampoLotacao = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         CampoSalvar = new javax.swing.JButton();
         CampoExcluir = new javax.swing.JButton();
@@ -52,7 +56,7 @@ public class Sala extends javax.swing.JFrame {
         jLabel2.setText("Nome");
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
-        jLabel3.setText("Sala");
+        jLabel3.setText("Lotacao");
 
         CampoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,9 +64,9 @@ public class Sala extends javax.swing.JFrame {
             }
         });
 
-        Campolotacao.addActionListener(new java.awt.event.ActionListener() {
+        CampoLotacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampolotacaoActionPerformed(evt);
+                CampoLotacaoActionPerformed(evt);
             }
         });
 
@@ -127,7 +131,7 @@ public class Sala extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Campolotacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                        .addComponent(CampoLotacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
                         .addComponent(CampoNome, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -147,7 +151,7 @@ public class Sala extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Campolotacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoLotacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -173,12 +177,25 @@ public class Sala extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoNomeActionPerformed
 
-    private void CampolotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampolotacaoActionPerformed
+    private void CampoLotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoLotacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampolotacaoActionPerformed
+    }//GEN-LAST:event_CampoLotacaoActionPerformed
 
     private void CampoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoSalvarActionPerformed
-        // TODO add your handling code here:
+        SalaDAO salaDao;
+        salaDao = new SalaDAO();
+
+        String nome;
+        nome = CampoNome.getText();
+        String lotacao;
+        lotacao = CampoLotacao.getText();
+
+        Sala sala;
+        sala = new Sala();
+        sala.setNome(nome);
+        sala.setLotacao(parseInt(lotacao));
+
+        salaDao.save(sala);
     }//GEN-LAST:event_CampoSalvarActionPerformed
 
     private void CampoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoExcluirActionPerformed
@@ -202,30 +219,32 @@ public class Sala extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Sala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Sala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Sala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Sala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Sala().setVisible(true);
+                new TelaSala().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CampoExcluir;
+    private javax.swing.JTextField CampoLotacao;
     private javax.swing.JTextField CampoNome;
     private javax.swing.JButton CampoSalvar;
-    private javax.swing.JTextField Campolotacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

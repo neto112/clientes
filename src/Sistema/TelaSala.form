@@ -51,7 +51,7 @@
                       <Component id="jLabel3" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="Campolotacao" alignment="0" pref="629" max="32767" attributes="0"/>
+                          <Component id="CampoLotacao" alignment="0" pref="629" max="32767" attributes="0"/>
                           <Component id="CampoNome" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -76,7 +76,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Campolotacao" min="-2" max="-2" attributes="0"/>
+                  <Component id="CampoLotacao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -114,7 +114,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial Rounded MT Bold" size="13" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sala"/>
+            <Property name="text" type="java.lang.String" value="Lotacao"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CampoNome">
@@ -122,9 +122,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoNomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="Campolotacao">
+        <Component class="javax.swing.JTextField" name="CampoLotacao">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampolotacaoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoLotacaoActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel4">
