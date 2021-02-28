@@ -17,23 +17,24 @@ import utils.Conexao;
  * @author Cristiano Neto
  */
 public class PessoaDAO {
+
     private Connection connection = Conexao.getConexao();
-    
-    public void save (Pessoa pessoa) {
+
+    public void save(Pessoa pessoa) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO pessoas (nome, sobrenome) VALUES (?,?)");
-            ps.setString(1, "nome");
-            ps.setString(2, "sobrenome");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO pessoa (Nome, Sobrenome) VALUES (?,?)");
+            ps.setString(1, pessoa.getNome());
+            ps.setString(2, pessoa.getSobrenome());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Pessoa cadastrado com sucesso!");
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
     }
-    
-        public void update (Pessoa pessoa) {
+
+    public void update(Pessoa pessoa) {
         try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE pessoas SET nome=?, sobrenome=? WHERE id=?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE pessoas SET Nome=?, Sobrenome=? WHERE id=?");
             ps.setString(1, pessoa.getNome());
             ps.setString(2, pessoa.getSobrenome());
             ps.setInt(3, pessoa.getId());
@@ -41,18 +42,18 @@ public class PessoaDAO {
             JOptionPane.showMessageDialog(null, "Pessoa atualizado com sucesso!");
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
     }
-        
+
     public void saveOrUpdate(Pessoa pessoa) {
-        if(pessoa.getId() == 0) {
+        if (pessoa.getId() == 0) {
             save(pessoa);
         } else {
             update(pessoa);
         }
     }
-    
-            public void delete(Pessoa pessoa) {
+
+    public void delete(Pessoa pessoa) {
         try {
             PreparedStatement ps = connection.prepareStatement("DELETE FROM pessoas WHERE id=?");
             ps.setInt(1, pessoa.getId());
@@ -60,27 +61,27 @@ public class PessoaDAO {
             JOptionPane.showMessageDialog(null, "Pessoa deletado com sucesso!");
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }      
-    } 
-            
+        }
+    }
+
     public List<Pessoa> getAll() {
-        List<Pessoa> pessoas= new ArrayList<>();
+        List<Pessoa> pessoas = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM pessoas");
             ResultSet rs = ps.executeQuery();
- 
+
             while (rs.next()) {
                 Pessoa pessoa = new Pessoa();
                 pessoa.setId(rs.getInt("id"));
                 pessoa.setNome(rs.getString("nome"));
                 pessoa.setSobrenome(rs.getString("sobrenome"));
-            pessoas.add(pessoa);    
+                pessoas.add(pessoa);
             }
             return pessoas;
 
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return null;
     }
 }

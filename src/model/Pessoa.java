@@ -7,8 +7,8 @@ package model;
 public class Pessoa {
 
     private int id;
-    private String nome;
-    private String sobrenome;
+    private String Nome;
+    private String Sobrenome;
 
     public int getId() {
         return id;
@@ -19,19 +19,23 @@ public class Pessoa {
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
     public String getSobrenome() {
-        return sobrenome;
+        return Sobrenome;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setSobrenome(String Sobrenome) {
+        this.Sobrenome = Sobrenome;
+    }
+
+    public void add(Pessoa pessoa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

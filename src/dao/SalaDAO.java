@@ -21,9 +21,9 @@ public class SalaDAO {
     
     public void save (Sala sala) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO salas (nome, lotacao) VALUES (?,?)");
-            ps.setString(1, "nome");
-            ps.setString(2, "lotacao");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO salas (Nome, Lotacao) VALUES (?,?)");
+            ps.setString(1, "Nome");
+            ps.setString(2, "Lotacao");
             ps.execute();
             JOptionPane.showMessageDialog(null, "Sala cadastrado com sucesso!");
         } catch (SQLException ex) {
@@ -33,7 +33,7 @@ public class SalaDAO {
     
         public void update (Sala sala) {
         try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE salas SET nome=?, lotacao=? WHERE id=?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE salas SET Nome=?, Lotacao=? WHERE id=?");
             ps.setString(1, sala.getNome());
             ps.setString(2, sala.getSala());
             ps.setInt(3, sala.getId());
@@ -66,14 +66,14 @@ public class SalaDAO {
     public List<Sala> getAll() {
         List<Sala> salas= new ArrayList<>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM salas");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM sala");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 Sala sala = new Sala();
                 sala.setId(rs.getInt("id"));
-                sala.setNome(rs.getString("nome"));
-                sala.setlotacao(rs.getString("lotacao"));
+                sala.setNome(rs.getString("Nome"));
+                sala.setLotacao(rs.getString("Lotacao"));
             salas.add(sala);    
             }
             return salas;

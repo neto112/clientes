@@ -5,16 +5,19 @@
  */
 package Sistema;
 
+import dao.PessoaDAO;
+import model.Pessoa;
+
 /**
  *
  * @author Cristiano Neto
  */
-public class Pessoa extends javax.swing.JFrame {
+public class TelaPessoa extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClienteGui
+     * Creates new form Pessoas
      */
-    public Pessoa() {
+    public TelaPessoa() {
         initComponents();
     }
 
@@ -54,7 +57,7 @@ public class Pessoa extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tela de Clientes");
+        setTitle("Pessoa");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -154,12 +157,12 @@ public class Pessoa extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(CampoSobrenome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
                         .addComponent(CampoNome, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +176,7 @@ public class Pessoa extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,7 +202,20 @@ public class Pessoa extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoSobrenomeActionPerformed
 
     private void CampoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoSalvarActionPerformed
-        // TODO add your handling code here:
+        PessoaDAO pessoaDao;
+        pessoaDao = new PessoaDAO();
+
+        String nome;
+        nome = CampoNome.getText();
+        String sobrenome;
+        sobrenome = CampoSobrenome.getText();
+
+        Pessoa pessoa;
+        pessoa = new Pessoa();
+        pessoa.setNome(nome);
+        pessoa.setSobrenome(sobrenome);
+
+        pessoaDao.save(pessoa);
     }//GEN-LAST:event_CampoSalvarActionPerformed
 
     private void CampoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoExcluirActionPerformed
@@ -223,21 +239,23 @@ public class Pessoa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pessoa().setVisible(true);
+                new TelaPessoa().setVisible(true);
             }
         });
     }

@@ -7,8 +7,8 @@ package model;
 public class sala {
 
     private int id;
-    private String nome;
-    private String lotacao;
+    private String Nome;
+    private String Lotacao;
 
     public int getId() {
         return id;
@@ -19,19 +19,19 @@ public class sala {
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
-    public String getlotacao() {
-        return lotacao;
+    public String getLotacao() {
+        return Lotacao;
     }
 
-    public void setlotacao(String lotacao) {
-        this.lotacao = lotacao;
+    public void setLotacao(String Lotacao) {
+        this.Lotacao = Lotacao;
     }
     
      
